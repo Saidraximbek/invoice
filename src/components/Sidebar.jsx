@@ -6,7 +6,7 @@ const Sidebar = () => {
   return (
     <div className="sidebar-container">
       <div className="logo-div">
-        <img src="./logo.svg" alt="logo" width={40} />
+        <img src="/logo.svg" alt="logo" width={40} />
       </div>
 
       <div className="profile-div">

@@ -14,7 +14,7 @@ function useFetch(url) {
     fetch(url)
       .then((res) => {
         if (!res.ok) {
-          throw new Error(`HTTP error! status: ${res.status}`);
+          throw new Error(error.message);
         }
         return res.json();
       })
