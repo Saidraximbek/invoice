@@ -1,0 +1,53 @@
+
+.filter-container {
+  font-family: var(--font-family);
+  position: relative;
+  display: inline-block;
+
+  color: var(--color-text);
+}
+
+.filter-btn {
+  background: none;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 15px;
+  line-height: 1.25;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-family: inherit;
+  color: inherit;
+}
+
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  margin-top: 1.2rem;
+  background: var(--color-surface);
+  border-radius: 6px;
+  padding: 2.5rem 2.4rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  z-index: 10;
+  width: 192px;
+  border-radius: 8px;
+
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+@media screen and (max-width:450px) {
+    .by-status {
+        display: none;
+    }
+}

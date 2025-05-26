@@ -1,0 +1,96 @@
+:root {
+  /* Primary Colors */
+  --color-primary: #7C5DFA;
+  --color-secondary: #9277FF;
+
+  /* Backgrounds & Neutrals */
+  --color-bg: #F8F8FB;
+  --color-surface: #FFFFFF;
+  --color-border: #DFE3FA;
+  --color-text: #0C0E16;
+  --color-text-secondary: #888EB0;
+  --color-muted: #7E88C3;
+  --sidebar-bg: #373B53;
+  --moon-sun: #DFE3FA;
+  /* Accent */
+  --color-danger: #EC5757;
+  --color-danger-light: #FF9797;
+
+  /* Font */
+  --font-family: 'Spartan', sans-serif;
+}
+
+[data-theme="dark"] {
+  --color-bg: #141625;
+  --color-surface: #1E2139;
+  --color-border: #252945;
+  --color-text: #FFFFFF;
+  --color-text-secondary: #DFE3FA;
+  --color-muted: #7E88C3;
+  --sidebar-bg: #1E2139;
+  --moon-sun: #DFE3FA;
+}
+
+/* league-spartan-500 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Spartan';
+  font-style: normal;
+  font-weight: 500;
+  src: url('./fonts/league-spartan-v11-latin-500.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* league-spartan-600 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Spartan';
+  font-style: normal;
+  font-weight: 600;
+  src: url('./fonts/league-spartan-v11-latin-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* league-spartan-700 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Spartan';
+  font-style: normal;
+  font-weight: 700;
+  src: url('./fonts/league-spartan-v11-latin-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+*, *::after, *::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+img {
+  display: flex;
+  object-fit: cover;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn {
+  background-color: transparent;
+  border: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  overflow-x: hidden;
+}

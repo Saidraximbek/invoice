@@ -1,0 +1,35 @@
+.add-continer {
+
+}
+
+.add-btn {
+    display: flex;
+    align-items: center;
+    gap: 1.6rem;
+    padding: 0.8rem;
+    padding-right: 1.5rem;
+    border-radius: 2.4rem;
+    background-color: var(--color-primary);
+    border: 0;
+    color: white;
+    font-size: 12px;
+    line-height: 1.25;
+    letter-spacing: 1px;
+}
+
+.add-btn img {
+    padding: 11px;
+    background-color: white;
+    border-radius: 50%;
+}
+
+.add-btn:hover {
+    background-color: var(--color-secondary);
+}
+
+
+@media screen and (max-width:450px) {
+    .add-button-title span {
+        display: none;
+    }
+}

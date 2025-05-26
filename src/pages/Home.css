@@ -1,0 +1,142 @@
+.home-container {
+  margin-top: 7.2rem;
+  margin-right: 3rem;
+}
+
+.home-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.home-titles {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.home-title {
+  font-size: 3.2rem;
+}
+
+.home-subtitle {
+  color: var(--color-text-secondary);
+  font-size: 12px;
+  line-height: 1.25;
+}
+
+.filter-add {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+}
+
+.home-subtitle-mobile {
+  display: none;
+  color: var(--color-text-secondary);
+  font-size: 12px;
+  line-height: 1.25;
+}
+
+.home-content {
+  margin-top: 6.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.invoice-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.2rem;
+  padding: 2.4rem 3.2rem;
+  background-color: var(--color-surface);
+  border-radius: 0.8rem;
+  box-shadow: 0px 10px 10px -10px #48549f1a;
+}
+
+.invoice-infos {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+}
+
+.invoise-id {
+  font-weight: 700;
+}
+
+.invoise-date {
+  color: var(--color-text-secondary);
+}
+
+.invoice-client-name {
+  color: var(--color-text-secondary);
+}
+
+.statuce-div {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.invoice-statuces {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+}
+
+.invoice-total {
+  font-size: 1.6rem;
+  line-height: 1.5;
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+
+.statuse-content {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 12px 18px;
+  border-radius: 0.6rem;
+}
+
+@media screen and (max-width: 768px) {
+  .home-container {
+    margin-top: 5.6rem;
+    margin-left: 4rem;
+    margin-right: 4rem;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .home-container {
+    margin-top: 3.2rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
+
+  .home-title {
+    font-size: 2rem;
+  }
+
+  .home-subtitle {
+    display: none;
+  }
+
+  .home-subtitle-mobile {
+    display: block;
+  }
+}
+
+@media screen and (max-width:650px) {
+    .invoice-infos {
+        flex-direction: column;
+        gap: 1.2rem;
+    }
+
+    .invoice-statuces {
+        flex-direction: column;
+        gap: 1.2rem;
+    }
+}

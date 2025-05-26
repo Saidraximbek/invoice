@@ -1,0 +1,23 @@
+.layout {
+    display: flex;
+    gap: 3rem;
+}
+
+.layout-main {
+    width: 100%;
+    max-width: 73rem;
+    margin-left: auto;
+    margin-right: auto;
+   height: 100vh;
+   overflow-y:scroll;
+}
+
+.layout-main::-webkit-scrollbar {
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    .layout {
+        flex-direction: column;
+    }
+}
