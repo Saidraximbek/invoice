@@ -1,4 +1,4 @@
-.AddInvoice-container {
+.edit-container {
   position: fixed;
   top: 0;
   left: 0;
@@ -13,15 +13,15 @@
   overflow-y: scroll;
 }
 
-.AddInvoice-container::-webkit-scrollbar {
+.edit-container::-webkit-scrollbar {
   width: 8px;
 }
 
-.AddInvoice-container::-webkit-scrollbar-track {
+.edit-container::-webkit-scrollbar-track {
   background: transparent;
 }
 
-.AddInvoice-container::-webkit-scrollbar-thumb {
+.edit-container::-webkit-scrollbar-thumb {
   background-color: var(--color-border);
   border-radius: 10px;
   border: 2px solid transparent;
@@ -29,11 +29,11 @@
   height: 112px;
 }
 
-.AddInvoice-container.show {
+.edit-container.show {
   transform: translateX(0);
 }
 
-.AddInvoice-content {
+.edit-content {
   padding: 2rem;
   padding-top: 5rem;
   display: flex;
@@ -41,7 +41,7 @@
   gap: 2.6rem;
 }
 
-.AddInvoice-overlay {
+.edit-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -53,7 +53,7 @@
   transition: opacity 0.3s ease-in-out;
 }
 
-.AddInvoice-overlay.show {
+.edit-overlay.show {
   opacity: 1;
   pointer-events: all;
 }
@@ -116,6 +116,7 @@
 .grid-2 {
   display: flex;
   align-items: center;
+
   gap: 1rem;
 }
 
@@ -137,7 +138,7 @@
   cursor: pointer;
 }
 
-.AddInvoice-item {
+.add-item {
   padding: 1.7rem;
   text-align: center;
   border: 1px dashed var(--color-border);
@@ -149,7 +150,7 @@
   color: var(--color-text-secondary);
 }
 
-.AddInvoice-footer {
+.edit-footer {
   display: flex;
   justify-content: end;
   margin-top: 2rem;
@@ -157,16 +158,16 @@
 }
 
 .back:hover {
-  cursor: pointer;
+    cursor: pointer;
 }
 
-.AddInvoice-back {
-  padding: 0px;
-  display: none;
+.edit-back {
+    padding: 0px;
+    display: none;
 }
 
-.AddInvoice-cancel,
-.AddInvoice-save {
+.edit-cancel,
+.edit-save {
   padding: 1.7rem 2.4rem;
   font-weight: 700;
   border-radius: 24px;
@@ -174,39 +175,41 @@
   cursor: pointer;
 }
 
-.AddInvoice-cancel {
+.edit-cancel {
   background-color: var(--color-border);
   color: #7e88c3;
   border: none;
 }
 
-.AddInvoice-save {
+.edit-save {
   background: #7c5dfa;
   color: white;
   border: none;
 }
 
 @media screen and (max-width: 770px) {
-  .AddInvoice-content {
+  .edit-content {
     padding-top: 10rem;
   }
 
-  .AddInvoice-container {
+  .edit-container {
     padding-left: 0px;
   }
-
-  .AddInvoice-back {
+    .edit-back {
     display: flex;
   }
 }
 
 @media (max-width: 450px) {
-  .AddInvoice-content {
+  .edit-content {
     padding-top: 10rem;
+
     border-radius: 0;
     height: 100%;
     overflow-y: scroll;
   }
+
+
 
   .grid-2,
   .grid-3 {
@@ -215,7 +218,7 @@
     gap: 1rem;
   }
 
-  .AddInvoice-footer {
+  .edit-footer {
     flex-direction: column;
     gap: 1rem;
   }
@@ -224,7 +227,7 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: 0.5rem;
-    padding: 1rem;
+    padding-bottom: 1rem;
     border-bottom: 1px solid #ccc;
   }
 
@@ -232,15 +235,13 @@
     font-size: 1rem;
   }
 
-  .AddInvoice-item {
+  .add-item {
     text-align: center;
     margin: 2rem 0 1rem;
   }
 
-  .AddInvoice-save,
-  .AddInvoice-cancel {
+  .edit-save,
+  .edit-cancel {
     width: 100%;
   }
 }
-
-

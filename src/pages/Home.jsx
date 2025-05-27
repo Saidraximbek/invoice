@@ -15,7 +15,7 @@ const Home = () => {
   const dataItem = data?.data || [];
 
   const [selectedStatus, setSelectedStatus] = useState([]);
-
+const [showAdd, setShowAdd] = useState(false)
   const filteredData = selectedStatus.length
     ? dataItem.filter((invoice) =>
         selectedStatus.includes(invoice.status || "draft")
@@ -39,7 +39,8 @@ const Home = () => {
 
         <div className="filter-add">
           <StatusFilter onChange={setSelectedStatus} />
-          <AddInvoice />
+          <button className="add-button-invoice" onClick={()=>setShowAdd(true)}><img src="/plus.svg" alt="" /><p>New <span>Invoice</span> </p></button>
+         {showAdd && <AddInvoice invoice={filteredData} show={showAdd} onClose={()=>setShowAdd(false)} />}
         </div>
       </div>
 

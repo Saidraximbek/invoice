@@ -57,7 +57,7 @@
 }
 
 .invoice-item:hover {
-  scale: 1.05;
+  scale: 1.02;
   transition: 0.3s ease;
 }
 
@@ -146,6 +146,27 @@
   line-height: 15px;
 }
 
+.add-button-invoice {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  height: 4.8rem;
+  padding-left: 8px;
+  padding-right: 15px;
+  border-radius: 96px;
+  border: 0;
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.add-button-invoice img {
+  padding: 11px;
+  background-color: white;
+  border-radius: 50%;
+}
+
+
+
 @media screen and (max-width: 768px) {
   .home-container {
     margin-top: 5.6rem;
@@ -183,5 +204,11 @@
     .invoice-statuces {
         flex-direction: column;
         gap: 1.2rem;
+    }
+}
+
+@media screen and (max-width:450px) {
+    .add-button-invoice p span {
+        display: none;
     }
 }

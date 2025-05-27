@@ -8,6 +8,8 @@
     align-items: center;
     justify-content: space-between;
     padding-bottom: 2.4rem;
+    position: relative;
+    z-index: 10000;
 }
 
 .logo-div {

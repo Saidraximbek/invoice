@@ -3,11 +3,13 @@ import { Link, useParams } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
 import "./Invoice.css";
 import Loader from "../components/Loader/Loader";
+import Edit from "../components/Edit/Edit";
+import AddInvoice from "../components/AddInvoice/AddInvoice";
 
 const Invoice = () => {
   const { id } = useParams();
   const [total, setTotal] = useState(0);
-
+  const [edit, setEdit] = useState(false)
   const { data, pending, error } = useFetch(
     `https://json-api.uz/api/project/fn35/invoices/${id}`
   );
@@ -26,12 +28,18 @@ const Invoice = () => {
 
   return (
     <div className="invoice-container">
+     
+     { edit && <Edit invoice={data} onClose={() => setEdit(false)} show={edit} />}
+  
+   
+    
       <Link to={"/"} className="back">
         <img src="/left.svg" alt="left" />
         <p>Go Back</p>
       </Link>
 
       <div className="invoice-content">
+       
         <div className="invoice-functions">
           <div className="invoice-status">
             <span className="invoice-status-title">Status</span>
@@ -71,18 +79,19 @@ const Invoice = () => {
           </div>
 
           <div className="invoice-change invoice-change-desktop">
-            <button className="invoice-edit">Edit</button>
+            <button className="invoice-edit" onClick={()=>setEdit(true)}>Edit</button>
             <button className="invoice-delete">Delete</button>
             <button className="invoice-mark-paid">Mark as Paid</button>
           </div>
         </div>
 
         <div className="invoice-change invoice-change-mobile">
-          <button className="invoice-edit">Edit</button>
+          <button className="invoice-edit" onClick={()=>setEdit(true)}>Edit</button>
           <button className="invoice-delete">Delete</button>
           <button className="invoice-mark-paid">Mark as Paid</button>
         </div>
 
+       
         <div className="invoice-all-infos">
           <div className="invoice-all-info-id-loc">
             <div className="invoice-id-type">
@@ -139,34 +148,36 @@ const Invoice = () => {
                   <p className="invoice-all-items-counts-titles">Total</p>
                 </div>
               </div>
-              {data &&
-                data.items.map((i, idx) => (
-                  <div className="invoice-all-items-item" key={idx}>
-                    <p className="invoice-all-items-item-name">{i.name}</p>
-                    <div className="invoice-all-items-item-count-price">
-                      <p className="item-qyt">{i.quantity}</p>
-                      <p className="item-qyt">£{i.price}.00</p>
-                      <p className="item-qyt-total">£{i.quantity * i.price}.00</p>
-                    </div>
+              {data.items.map((i, idx) => (
+                <div className="invoice-all-items-item" key={idx}>
+                  <p className="invoice-all-items-item-name">{i.name}</p>
+                  <div className="invoice-all-items-item-count-price">
+                    <p className="item-qyt">{i.quantity}</p>
+                    <p className="item-qyt">£{i.price}.00</p>
+                    <p className="item-qyt-total">
+                      £{i.quantity * i.price}.00
+                    </p>
+                  </div>
 
-                    <div className="invoice-all-items-item-count-price-mobile">
-                      <div className="invoice-name-mob-div">
-                        <p className="invoice-all-items-item-name-mob">
-                          {i.name}
-                        </p>
-                        <p>
-                          {i.quantity}x£{i.price}.00
-                        </p>
-                      </div>
-                      <p className="item-qyt-total">
-                        £{i.quantity * i.price}.00
+                  <div className="invoice-all-items-item-count-price-mobile">
+                    <div className="invoice-name-mob-div">
+                      <p className="invoice-all-items-item-name-mob">
+                        {i.name}
+                      </p>
+                      <p>
+                        {i.quantity}x£{i.price}.00
                       </p>
                     </div>
+                    <p className="item-qyt-total">
+                      £{i.quantity * i.price}.00
+                    </p>
                   </div>
-                ))}
+                </div>
+              ))}
             </div>
           </div>
 
+  
           <div className="items-over-total">
             <p>Amount Due</p>
             <h2>£{total}</h2>
