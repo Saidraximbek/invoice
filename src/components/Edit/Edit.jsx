@@ -1,21 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { updateById } from "../../requests";
 import "./Edit.css";
 
 const Edit = ({ show, onClose, invoice }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [form, setForm] = useState({
-    senderAddress: {
-      street: "",
-      city: "",
-      postCode: "",
-      country: "",
-    },
-    clientAddress: {
-      street: "",
-      city: "",
-      postCode: "",
-      country: "",
-    },
+    senderAddress: { street: "", city: "", postCode: "", country: "" },
+    clientAddress: { street: "", city: "", postCode: "", country: "" },
     clientName: "",
     clientEmail: "",
     createdAt: "",
@@ -36,7 +27,6 @@ const Edit = ({ show, onClose, invoice }) => {
         description: invoice.description,
         items: [...invoice.items],
       });
-
       const timer = setTimeout(() => setIsVisible(true), 10);
       return () => clearTimeout(timer);
     } else {
@@ -65,19 +55,12 @@ const Edit = ({ show, onClose, invoice }) => {
 
   const handleSaveChanges = async () => {
     try {
-      const response = await fetch(`/api/invoices/${invoice.id}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
-
-      if (!response.ok) throw new Error("Failed to update invoice");
-
-      const updatedInvoice = await response.json();
-      console.log("Updated:", updatedInvoice);
-      onClose(); 
+      await updateById(invoice.id, form);
+      alert("Successfully updated");
+      onClose();
     } catch (error) {
-      console.error("Error updating invoice:", error);
+      console.error("Update error:", error);
+      alert("Failed to update invoice");
     }
   };
 
@@ -91,16 +74,14 @@ const Edit = ({ show, onClose, invoice }) => {
           </span>
 
           <h2 className="section-title">
-            Edit <span>#</span>
-            {invoice?.id}
+            Edit <span>#</span>{invoice?.id}
           </h2>
 
-          {/* BILL FROM */}
+          {/* Bill From */}
           <h3 className="section-subtitle">Bill From</h3>
           <div className="input-group">
             <label className="input-label">Street Address</label>
-            <input
-              className="input-field"
+            <input className="input-field"
               value={form.senderAddress.street}
               onChange={(e) =>
                 setForm({
@@ -114,11 +95,10 @@ const Edit = ({ show, onClose, invoice }) => {
             />
           </div>
           <div className="grid-3">
-            {["city", "postCode", "country"].map((field) => (
+            {["City", "Post Code", "Country"].map((field) => (
               <div className="input-group" key={field}>
-                <label className="input-label">{field[0].toUpperCase() + field.slice(1)}</label>
-                <input
-                  className="input-field"
+                <label className="input-label">{field}</label>
+                <input className="input-field"
                   value={form.senderAddress[field]}
                   onChange={(e) =>
                     setForm({
@@ -134,28 +114,25 @@ const Edit = ({ show, onClose, invoice }) => {
             ))}
           </div>
 
-          {/* BILL TO */}
+        
           <h3 className="section-subtitle">Bill To</h3>
           <div className="input-group">
-            <label className="input-label">Client's Name</label>
-            <input
-              className="input-field-full input-field"
+            <label className="input-label">Client Name</label>
+            <input className="input-field"
               value={form.clientName}
               onChange={(e) => setForm({ ...form, clientName: e.target.value })}
             />
           </div>
           <div className="input-group">
-            <label className="input-label">Client's Email</label>
-            <input
-              className="input-field-full input-field"
+            <label className="input-label">Client Email</label>
+            <input className="input-field"
               value={form.clientEmail}
               onChange={(e) => setForm({ ...form, clientEmail: e.target.value })}
             />
           </div>
           <div className="input-group">
             <label className="input-label">Street Address</label>
-            <input
-              className="input-field-full input-field"
+            <input className="input-field"
               value={form.clientAddress.street}
               onChange={(e) =>
                 setForm({
@@ -171,9 +148,8 @@ const Edit = ({ show, onClose, invoice }) => {
           <div className="grid-3">
             {["city", "postCode", "country"].map((field) => (
               <div className="input-group" key={field}>
-                <label className="input-label">{field[0].toUpperCase() + field.slice(1)}</label>
-                <input
-                  className="input-field"
+                <label className="input-label">{field}</label>
+                <input className="input-field"
                   value={form.clientAddress[field]}
                   onChange={(e) =>
                     setForm({
@@ -192,23 +168,17 @@ const Edit = ({ show, onClose, invoice }) => {
           <div className="grid-2">
             <div className="input-group">
               <label className="input-label">Invoice Date</label>
-              <input
-                className="input-field"
+              <input className="input-field"
                 type="date"
                 value={form.createdAt}
-                onChange={(e) =>
-                  setForm({ ...form, createdAt: e.target.value })
-                }
+                onChange={(e) => setForm({ ...form, createdAt: e.target.value })}
               />
             </div>
             <div className="input-group">
               <label className="input-label">Payment Terms</label>
-              <select
-                className="input-field"
+              <select className="input-field"
                 value={form.paymentTerms}
-                onChange={(e) =>
-                  setForm({ ...form, paymentTerms: e.target.value })
-                }
+                onChange={(e) => setForm({ ...form, paymentTerms: e.target.value })}
               >
                 <option value="Net 30 Days">Net 30 Days</option>
                 <option value="Net 15 Days">Net 15 Days</option>
@@ -219,75 +189,44 @@ const Edit = ({ show, onClose, invoice }) => {
 
           <div className="input-group">
             <label className="input-label">Project Description</label>
-            <input
-              className="input-field"
+            <input className="input-field"
               value={form.description}
-              onChange={(e) =>
-                setForm({ ...form, description: e.target.value })
-              }
+              onChange={(e) => setForm({ ...form, description: e.target.value })}
             />
           </div>
 
-          {/* ITEM LIST */}
-          <h3 className="section-item-list-title">Item List</h3>
-          {form.items.map((item, idx) => (
-            <div className="item-row" key={idx}>
-              <input
-                className="input-field"
+       
+          <h3>Item List</h3>
+          {form.items.map((item, id) => (
+            <div className="item-row" key={id}>
+              <input className="input-field"
                 value={item.name}
-                onChange={(e) =>
-                  handleItemChange(idx, "name", e.target.value)
-                }
+                onChange={(e) => handleItemChange(id, "name", e.target.value)}
               />
-              <input
-                className="input-field"
+              <input className="input-field"
                 type="number"
                 value={item.quantity}
-                onChange={(e) =>
-                  handleItemChange(idx, "quantity", e.target.value)
-                }
+                onChange={(e) => handleItemChange(id, "quantity", e.target.value)}
               />
-              <input
-                className="input-field"
+              <input className="input-field"
                 type="number"
                 value={item.price}
-                onChange={(e) =>
-                  handleItemChange(idx, "price", e.target.value)
-                }
+                onChange={(e) => handleItemChange(id, "price", e.target.value)}
               />
-              <input
-                className="input-field"
-                type="text"
-                readOnly
-                value={(item.quantity * item.price).toFixed(2)}
-              />
-              <span
-                className="item-delete"
-                onClick={() => handleItemDelete(idx)}
-              >
-                <img src="/deletee.svg" alt="delete" />
-              </span>
+              <input className="input-field" type="text" readOnly value={(item.quantity * item.price).toFixed(2)} />
+              <button className="item-delete" onClick={() => handleItemDelete(id)}>Delete</button>
             </div>
           ))}
-          <div className="add-item" onClick={handleAddItem}>
-            + Add New Item
-          </div>
+          <button className="add-item" onClick={handleAddItem}>+ Add Item</button>
 
           <div className="edit-footer">
-            <button className="edit-cancel" onClick={onClose}>
-              Cancel
-            </button>
-            <button className="edit-save" onClick={handleSaveChanges}>
-              Save Changes
-            </button>
+            <button onClick={onClose}>Cancel</button>
+            <button onClick={handleSaveChanges}>Save Changes</button>
           </div>
         </div>
       </div>
 
-      <div
-        className={`edit-overlay ${isVisible ? "show" : ""}`}
-        onClick={onClose}
-      ></div>
+      <div className={`edit-overlay ${isVisible ? "show" : ""}`} onClick={onClose}></div>
     </>
   );
 };

@@ -2,20 +2,23 @@ import React, { useEffect, useState } from "react";
 import "./AddInvoice.css";
 
 const AddInvoice = ({ show, onClose, invoice }) => {
-  const [isVisible, setIsVisible] = useState(true);
+  const [shouldRender, setShouldRender] = useState(false);
 
   useEffect(() => {
+    let timeout;
     if (show) {
-      const timer = setTimeout(() => setIsVisible(true), 10);
-      return () => clearTimeout(timer);
+      setShouldRender(true);
     } else {
-      setIsVisible(false);
+      timeout = setTimeout(() => setShouldRender(false), 400); // CSS transition duration
     }
+    return () => clearTimeout(timeout);
   }, [show]);
+
+  if (!shouldRender && !show) return null;
 
   return (
     <>
-      <div className={`AddInvoice-container ${isVisible ? "show" : ""}`}>
+      <div className={`AddInvoice-container ${show ? "show" : ""}`}>
         <div className="AddInvoice-content">
           <span className="back AddInvoice-back" onClick={onClose}>
             <img src="/left.svg" alt="left" />
@@ -23,8 +26,7 @@ const AddInvoice = ({ show, onClose, invoice }) => {
           </span>
 
           <h2 className="section-title">
-            AddInvoice <span>#</span>
-            {invoice?.id}
+            AddInvoice <span>#</span>{invoice?.id}
           </h2>
 
           <h3 className="section-subtitle">Bill From</h3>
@@ -120,7 +122,7 @@ const AddInvoice = ({ show, onClose, invoice }) => {
       </div>
 
       <div
-        className={`AddInvoice-overlay ${isVisible ? "show" : ""}`}
+        className={`AddInvoice-overlay ${show ? "show" : ""}`}
         onClick={onClose}
       ></div>
     </>

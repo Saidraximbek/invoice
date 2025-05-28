@@ -10,7 +10,29 @@
   transform: translateX(-100%);
   transition: transform 0.4s ease-in-out;
   padding-left: 15.9rem;
-  overflow-y: scroll;
+  overflow-y: auto;
+}
+
+.AddInvoice-container.show {
+  transform: translateX(0);
+}
+
+.AddInvoice-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.AddInvoice-overlay.show {
+  opacity: 1;
+  pointer-events: all;
 }
 
 .AddInvoice-container::-webkit-scrollbar {
@@ -27,10 +49,6 @@
   border: 2px solid transparent;
   background-clip: content-box;
   height: 112px;
-}
-
-.AddInvoice-container.show {
-  transform: translateX(0);
 }
 
 .AddInvoice-content {
@@ -51,11 +69,6 @@
   z-index: 1000;
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
-}
-
-.AddInvoice-overlay.show {
-  opacity: 1;
-  pointer-events: all;
 }
 
 .section-title {
@@ -242,5 +255,3 @@
     width: 100%;
   }
 }
-
-
