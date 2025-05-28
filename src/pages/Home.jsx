@@ -51,7 +51,7 @@ const [showAdd, setShowAdd] = useState(false)
               <div key={invoice.id} className="invoice-item">
                 <div className="invoice-infos">
                   <p className="invoise-id">
-                    #{invoice.senderAddress.postCode}
+                    #{invoice.senderAddress?.postCode}
                   </p>
                   <p className="invoise-date">{invoice.createdAt}</p>
                   <p className="invoice-client-name">{invoice.clientName}</p>

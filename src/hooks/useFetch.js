@@ -5,30 +5,31 @@ function useFetch(url) {
   const [pending, setPending] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
+  const fetchData = async () => {
     if (!url) return;
 
     setPending(true);
     setError(null);
 
-    fetch(url)
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error(error.message);
-        }
-        return res.json();
-      })
-      .then((data) => {
-        setData(data);
-        setPending(false);
-      })
-      .catch((err) => {
-        setError(err.message);
-        setPending(false);
-      });
+    try {
+      const res = await fetch(url);
+      if (!res.ok) {
+        throw new Error(`HTTP error: ${res.status}`);
+      }
+      const result = await res.json();
+      setData(result);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setPending(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
   }, [url]);
 
-  return { data, pending, error };
+  return { data, pending, error, refetch: fetchData };
 }
 
 export default useFetch;

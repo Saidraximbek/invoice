@@ -6,7 +6,7 @@ export async function getInvoices() {
     const result = await res.json();
     return result.data;
   } else {
-    throw new Error("Failed to fetch invoices");
+    throw new Error("Fail");
   }
 }
 
@@ -15,7 +15,7 @@ export async function getInvoice(id) {
   if (res.ok) {
     return await res.json();
   } else {
-    throw new Error("Failed to fetch invoice");
+    throw new Error("Fail");
   }
 }
 
@@ -26,7 +26,7 @@ export async function deleteById(id) {
   if (res.ok) {
     return "Successfully deleted";
   } else {
-    throw new Error("Failed to delete");
+    throw new Error("Fail");
   }
 }
 
@@ -41,7 +41,7 @@ export async function updateById(id, newData) {
   if (res.ok) {
     return await res.json();
   } else {
-    throw new Error("Failed to update");
+    throw new Error("Fail");
   }
 }
 
@@ -56,6 +56,6 @@ export async function addInvoice(data) {
   if (res.ok) {
     return await res.json();
   } else {
-    throw new Error("Failed to add invoice");
+    throw new Error("Fail");
   }
 }
