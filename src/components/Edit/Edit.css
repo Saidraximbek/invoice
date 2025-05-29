@@ -158,12 +158,12 @@
 }
 
 .back:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .edit-back {
-    padding: 0px;
-    display: none;
+  padding: 0px;
+  display: none;
 }
 
 .edit-cancel,
@@ -195,7 +195,7 @@
   .edit-container {
     padding-left: 0px;
   }
-    .edit-back {
+  .edit-back {
     display: flex;
   }
 }
@@ -208,8 +208,6 @@
     height: 100%;
     overflow-y: scroll;
   }
-
-
 
   .grid-2,
   .grid-3 {

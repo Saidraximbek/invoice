@@ -81,6 +81,8 @@
 
 .invoice-change-mobile {
   display: none;
+ 
+
 }
 
 .invoice-all-infos {
@@ -162,7 +164,7 @@
 
 .invoice-all-items {
   width: 100%;
-  background-color: var(--color-bg);
+  background-color: var(--all-items-color);
   border-radius: 0.8rem 0.8rem 0 0;
   padding: 3.2rem;
 }
@@ -239,7 +241,7 @@
 
 .items-over-total {
   margin-top: -2.1rem;
-  background-color: var(--sidebar-bg);
+  background-color: var(--due-color);
   padding: 3.2rem;
   border-radius: 0 0 0.8rem 0.8rem;
   color: white;
@@ -274,7 +276,6 @@
   justify-content: center;
   align-items: center;
   z-index: 1000;
-  /* Transition qo‘shildi */
   transition: background 0.3s ease;
 }
 
@@ -290,7 +291,6 @@
   border-radius: 0.8rem;
   padding: 4.8rem;
 
-  /* Modal silliq chiqishi uchun */
   transform: scale(0.95);
   opacity: 0;
   transition: transform 0.3s ease, opacity 0.3s ease;
@@ -366,6 +366,7 @@
     padding: 2.1rem 2.4rem;
     position: fixed;
     bottom: 0;
+     box-shadow: 0px 10px 10px -10px #48549F1A;
   }
 
   .invoice-functions {

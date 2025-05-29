@@ -1,30 +1,27 @@
-import React from 'react';
-import Home from './pages/Home';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import MainLayout from './layout/MainLayout';
-import Invoice from './pages/Invoice';
+import React from "react";
+import Home from "./pages/Home";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import MainLayout from "./layout/MainLayout";
+import Invoice from "./pages/Invoice";
 
 const routes = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <MainLayout />,
     children: [
       {
         index: true,
-        element: <Home />
+        element: <Home />,
       },
       {
         path: "/invoices/:id",
-        element: <Invoice/>
+        element: <Invoice />,
       },
     ],
   },
 ]);
 
-
-
 const App = () => {
-  
   return <RouterProvider router={routes} />;
 };
 

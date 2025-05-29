@@ -102,10 +102,10 @@
 }
 
 .input-field {
-  padding: 1.7rem 2rem;
+  padding: 2rem 2rem;
   border: 1px solid var(--color-border);
   border-radius: 8px;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: bold;
   height: 4.5rem;
   width: 100%;
@@ -233,9 +233,33 @@ label {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 80%; 
+  width: 80%;
   color: var(--color-text-secondary);
 }
+
+.input-field {
+  
+  
+  cursor: pointer;
+  appearance: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.input-field:focus {
+  outline: none;
+  border-color: var(--color-secondary);
+  box-shadow: 0 0 0 2px rgba(124, 58, 237, 0.3);
+}
+
+
+.input-field:hover {
+  border-color: var(--color-secondary)
+}
+
+
+
+
 
 .item-delete {
   background-color: transparent;

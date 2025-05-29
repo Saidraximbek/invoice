@@ -189,10 +189,10 @@ const Invoice = () => {
               <p className="invoice-all-desc">{data.description}</p>
             </div>
             <div className="invoice-all-loc">
-              <p>{data.senderAddress?.street || "-"}</p>
-              <p>{data.senderAddress?.city || "-"}</p>
-              <p>{data.senderAddress?.postCode || "-"}</p>
-              <p>{data.senderAddress?.country || "-"}</p>
+              <p>{data.senderAddress?.street }</p>
+              <p>{data.senderAddress?.city }</p>
+              <p>{data.senderAddress?.postCode }</p>
+              <p>{data.senderAddress?.country }</p>
             </div>
           </div>
 
@@ -212,10 +212,10 @@ const Invoice = () => {
               <p className="invoice-payment-data-title">Bill To</p>
               <p className="invoice-payment-data-date">{data.clientName}</p>
               <div className="invoice-all-loc invoice-all-client-loc">
-                <p>{data.clientAddress?.street || "-"}</p>
-                <p>{data.clientAddress?.city || "-"}</p>
-                <p>{data.clientAddress?.postCode || "-"}</p>
-                <p>{data.clientAddress?.country || "-"}</p>
+                <p>{data.clientAddress?.street }</p>
+                <p>{data.clientAddress?.city }</p>
+                <p>{data.clientAddress?.postCode }</p>
+                <p>{data.clientAddress?.country }</p>
               </div>
             </div>
 
@@ -290,7 +290,7 @@ const Invoice = () => {
 
           <div className="items-over-total">
             <p>Amount Due</p>
-            <h2>£{total}</h2>
+            <h2>{Number.isInteger(total) ? `£${total}.00` : `£${total}`}</h2>
           </div>
         </div>
       </div>

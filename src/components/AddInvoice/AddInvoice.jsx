@@ -80,7 +80,7 @@ const AddInvoice = ({ show, onClose, invoice }) => {
 
   const handleSave = async (status) => {
     if (!validateFields()) {
-      toast.error("Please fill in all required fields correctly.");
+      toast.error("Write all inputs!");
       return;
     }
 
@@ -142,7 +142,7 @@ const AddInvoice = ({ show, onClose, invoice }) => {
           <h3 className="section-subtitle">Bill From</h3>
           <div className="input-group">
             <label className="input-label">
-              Street Address{" "}
+              Street Address
               {errors["sender-street"] && (
                 <span className="error-text"> can't be empty</span>
               )}
@@ -159,7 +159,7 @@ const AddInvoice = ({ show, onClose, invoice }) => {
           <div className="grid-3">
             <div className="input-group">
               <label className="input-label">
-                <span className="input-label-title">city</span>{" "}
+                <span className="input-label-title">city</span>
                 {errors["sender-city"] && (
                   <span className="error-text"> can't be empty</span>
                 )}
@@ -175,7 +175,7 @@ const AddInvoice = ({ show, onClose, invoice }) => {
 
             <div className="input-group">
               <label className="input-label">
-                <span className="input-label-title">postCode</span>{" "}
+                <span className="input-label-title">postCode</span>
                 {errors["sender-postCode"] && (
                   <span className="error-text"> can't be empty</span>
                 )}
@@ -193,7 +193,7 @@ const AddInvoice = ({ show, onClose, invoice }) => {
 
             <div className="input-group">
               <label className="input-label">
-                <span className="input-label-title">country</span>{" "}
+                <span className="input-label-title">country</span>
                 {errors["sender-country"] && (
                   <span className="error-text"> can't be empty</span>
                 )}
@@ -312,7 +312,7 @@ const AddInvoice = ({ show, onClose, invoice }) => {
           <div className="grid-2">
             <div className="input-group">
               <label className="input-label">
-                Invoice Date{" "}
+                Invoice Date
                 {errors.createdAt && (
                   <span className="error-text"> can't be empty</span>
                 )}
@@ -341,8 +341,9 @@ const AddInvoice = ({ show, onClose, invoice }) => {
                   })
                 }
               >
+                <option value={1}>Net 1 Days</option>
                 <option value={7}>Net 7 Days</option>
-                <option value={15}>Net 15 Days</option>
+                <option value={14}>Net 14 Days</option>
                 <option value={30}>Net 30 Days</option>
               </select>
             </div>
@@ -350,7 +351,7 @@ const AddInvoice = ({ show, onClose, invoice }) => {
 
           <div className="input-group">
             <label className="input-label">
-              Project Description{" "}
+              Project Description
               {errors.description && (
                 <span className="error-text"> can't be empty</span>
               )}

@@ -15,7 +15,7 @@ const Home = () => {
   const dataItem = data?.data || [];
 
   const [selectedStatus, setSelectedStatus] = useState([]);
-const [showAdd, setShowAdd] = useState(false)
+  const [showAdd, setShowAdd] = useState(false);
   const filteredData = selectedStatus.length
     ? dataItem.filter((invoice) =>
         selectedStatus.includes(invoice.status || "draft")
@@ -24,7 +24,6 @@ const [showAdd, setShowAdd] = useState(false)
 
   if (pending) return <Loader />;
   if (error) return <p>{error}</p>;
-
 
   return (
     <div className="home-container">
@@ -39,15 +38,29 @@ const [showAdd, setShowAdd] = useState(false)
 
         <div className="filter-add">
           <StatusFilter onChange={setSelectedStatus} />
-          <button className="add-button-invoice" onClick={()=>setShowAdd(true)}><img src="/plus.svg" alt="" /><p>New <span>Invoice</span> </p></button>
-         {showAdd && <AddInvoice invoice={filteredData} show={showAdd} onClose={()=>setShowAdd(false)} />}
+          <button
+            className="add-button-invoice"
+            onClick={() => setShowAdd(true)}
+          >
+            <img src="/plus.svg" alt="" />
+            <p>
+              New <span>Invoice</span>{" "}
+            </p>
+          </button>
+          {showAdd && (
+            <AddInvoice
+              invoice={filteredData}
+              show={showAdd}
+              onClose={() => setShowAdd(false)}
+            />
+          )}
         </div>
       </div>
 
       <div className="home-content">
         {filteredData.length ? (
           filteredData.map((invoice) => (
-           <Link to={`/invoices/${invoice.id}`} key={invoice.id}>
+            <Link to={`/invoices/${invoice.id}`} key={invoice.id}>
               <div key={invoice.id} className="invoice-item">
                 <div className="invoice-infos">
                   <p className="invoise-id">
@@ -103,10 +116,7 @@ const [showAdd, setShowAdd] = useState(false)
                       </svg>
                       {invoice.status === undefined ? "draft" : invoice.status}
                     </p>
-                    <img
-                      src="./right.svg"
-                      alt="right"
-                    />
+                    <img src="./right.svg" alt="right" />
                   </div>
                 </div>
               </div>

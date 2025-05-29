@@ -1,62 +1,68 @@
 :root {
   /* Primary Colors */
-  --color-primary: #7C5DFA;
-  --color-secondary: #9277FF;
+  --color-primary: #7c5dfa;
+  --color-secondary: #9277ff;
 
   /* Backgrounds & Neutrals */
-  --color-bg: #F8F8FB;
-  --color-surface: #FFFFFF;
-  --color-border: #DFE3FA;
-  --color-text: #0C0E16;
-  --color-text-secondary: #888EB0;
-  --color-muted: #7E88C3;
-  --sidebar-bg: #373B53;
-  --moon-sun: #DFE3FA;
+  --color-bg: #f8f8fb;
+  --color-surface: #ffffff;
+  --color-border: #dfe3fa;
+  --color-text: #0c0e16;
+  --color-text-secondary: #888eb0;
+  --color-muted: #7e88c3;
+  --sidebar-bg: #373b53;
+  --moon-sun: #dfe3fa;
+  --due-color: #373b53;
+  --all-items-color: #F9FAFE;
   /* Accent */
-  --color-danger: #EC5757;
-  --color-danger-light: #FF9797;
+  --color-danger: #ec5757;
+  --color-danger-light: #ff9797;
 
   /* Font */
-  --font-family: 'Spartan', sans-serif;
+  --font-family: "Spartan", sans-serif;
 }
 
 [data-theme="dark"] {
   --color-bg: #141625;
-  --color-surface: #1E2139;
+  --color-surface: #1e2139;
   --color-border: #252945;
-  --color-text: #FFFFFF;
-  --color-text-secondary: #DFE3FA;
-  --color-muted: #7E88C3;
-  --sidebar-bg: #1E2139;
-  --moon-sun: #DFE3FA;
+  --color-text: #ffffff;
+  --color-text-secondary: #dfe3fa;
+  --color-muted: #7e88c3;
+  --sidebar-bg: #1e2139;
+  --moon-sun: #dfe3fa;
+  --due-color: #141625;
+  --all-items-color: #252945;
 }
 
 /* league-spartan-500 - latin */
 @font-face {
   font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-  font-family: 'Spartan';
+  font-family: "Spartan";
   font-style: normal;
   font-weight: 500;
-  src: url('./fonts/league-spartan-v11-latin-500.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url("./fonts/league-spartan-v11-latin-500.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 /* league-spartan-600 - latin */
 @font-face {
   font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-  font-family: 'Spartan';
+  font-family: "Spartan";
   font-style: normal;
   font-weight: 600;
-  src: url('./fonts/league-spartan-v11-latin-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url("./fonts/league-spartan-v11-latin-600.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 /* league-spartan-700 - latin */
 @font-face {
   font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-  font-family: 'Spartan';
+  font-family: "Spartan";
   font-style: normal;
   font-weight: 700;
-  src: url('./fonts/league-spartan-v11-latin-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url("./fonts/league-spartan-v11-latin-700.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 
-*, *::after, *::before {
+*,
+*::after,
+*::before {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -72,7 +78,8 @@ img {
   object-fit: cover;
 }
 
-ul, ol {
+ul,
+ol {
   list-style: none;
 }
 
