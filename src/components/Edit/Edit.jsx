@@ -60,6 +60,7 @@ const Edit = ({ show, onClose, invoice }) => {
     try {
       await updateById(invoice.id, form);
       toast.success("Successfully updated");
+       window.location.reload();
       onClose();
     } catch (error) {
       console.error("Update error:", error);
@@ -215,6 +216,12 @@ const Edit = ({ show, onClose, invoice }) => {
           </div>
 
           <h3>Item List</h3>
+           <div className="section-item-list-subtitles">
+            <p>Item Name</p>
+            <p>Qty.</p>
+            <p>Price</p>
+            <p>Total</p>
+          </div>
           {form.items.map((item, id) => (
             <div className="item-row" key={id}>
               <input
@@ -242,12 +249,23 @@ const Edit = ({ show, onClose, invoice }) => {
                 readOnly
                 value={(item.quantity * item.price).toFixed(2)}
               />
-              <button
-                className="item-delete"
-                onClick={() => handleItemDelete(id)}
-              >
-                <img src="/deletee.svg" alt="delete" />
-              </button>
+              {form.items.length > 1 ? (
+                             <img
+                               src="/deletee.svg"
+                               alt="Delete"
+                               onClick={() => handleItemDelete(id)}
+                               style={{ cursor: "pointer" }}
+                             />
+                           ) : (
+                             <img
+                               src="/deletee.svg"
+                               alt="Delete"
+                               onClick={() =>
+                                 toast.error("There must be at least one item!!!!!!!")
+                               }
+                               style={{ cursor: "pointer" }}
+                             />
+                           )}
             </div>
           ))}
           <button className="add-item" onClick={handleAddItem}>
@@ -255,8 +273,8 @@ const Edit = ({ show, onClose, invoice }) => {
           </button>
 
           <div className="edit-footer">
-            <button onClick={onClose}>Cancel</button>
-            <button onClick={handleSaveChanges}>Save Changes</button>
+            <button onClick={onClose} className="AddInvoice-cancel">Cancel</button>
+            <button onClick={handleSaveChanges} className="AddInvoice-save">Save Changes</button>
           </div>
         </div>
       </div>

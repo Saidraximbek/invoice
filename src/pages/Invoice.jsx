@@ -13,6 +13,7 @@ const Invoice = () => {
   const [edit, setEdit] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [deleting, setDeleting] = useState(false);
+  const [marking, setMarking] = useState(false);
   const { data, pending, error, refetch } = useFetch(
     `https://json-api.uz/api/project/fn35/invoices/${id}`
   );
@@ -27,6 +28,7 @@ const Invoice = () => {
   }, [data]);
 
   const markAsPaid = async () => {
+    setMarking(true);
     try {
       const response = await fetch(
         `https://json-api.uz/api/project/fn35/invoices/${id}`,
@@ -49,6 +51,8 @@ const Invoice = () => {
     } catch (err) {
       console.error(err.message);
       toast.error("Error: " + err.message);
+    } finally {
+      setMarking(false);
     }
   };
 
@@ -67,7 +71,7 @@ const Invoice = () => {
         throw new Error(errorData.message || "Error");
       }
 
-      toast.success("Invoice muvaffaqiyatli o'chirildi");
+      toast.success("Delete success");
       navigate("/");
     } catch (err) {
       console.error(err.message);
@@ -144,11 +148,17 @@ const Invoice = () => {
             </button>
             {data.status === "paid" ? (
               <button disabled className="invoice-mark-paid disabled-mark">
-                Mark as Paid
+                Paid
               </button>
             ) : (
-              <button className="invoice-mark-paid" onClick={markAsPaid}>
-                Mark as Paid
+              <button
+                className={`invoice-mark-paid ${
+                  marking ? "disabled-mark" : ""
+                }`}
+                onClick={markAsPaid}
+                disabled={marking}
+              >
+                {marking ? "Loading..." : "Mark as Paid"}
               </button>
             )}
           </div>
