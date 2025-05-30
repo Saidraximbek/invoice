@@ -1,16 +1,20 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect } from "react";
 
 const GlobalContext = createContext();
 
 export const GlobalProvider = ({ children }) => {
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState(() => {
+    const storedTheme = localStorage.getItem("theme");
+    return storedTheme ? storedTheme : "light";
+  });
 
-
-    document.documentElement.setAttribute('data-theme', theme);
- 
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
 
   const handleTheme = () => {
-    setTheme((a) => (a === 'light' ? 'dark' : 'light'));
+    setTheme((prev) => (prev === "light" ? "dark" : "light"));
   };
 
   return (
@@ -19,5 +23,4 @@ export const GlobalProvider = ({ children }) => {
     </GlobalContext.Provider>
   );
 };
-
 export const useGlobalContext = () => useContext(GlobalContext);

@@ -1,6 +1,7 @@
 import React from "react";
 import "./Sidebar.css";
 import { useGlobalContext } from "../hooks/useGlobalContext";
+
 const Sidebar = () => {
   const { handleTheme, theme } = useGlobalContext();
   return (

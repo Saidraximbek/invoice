@@ -40,7 +40,8 @@
 .dropdown-item {
   display: flex;
   align-items: center;
-  gap: 8px;
+ justify-content: start;
+ gap: 0.8rem;
   padding: 6px 0;
   cursor: pointer;
   font-size: 15px;
