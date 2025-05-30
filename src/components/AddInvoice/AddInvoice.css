@@ -297,6 +297,7 @@ label {
   .AddInvoice-footer {
     flex-direction: column;
     gap: 1rem;
+    margin-top: -2rem;
   }
 
   .item-row {

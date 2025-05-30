@@ -67,6 +67,7 @@
 
 .invoice-edit {
   background-color: var(--color-bg);
+  color: var(--color-text-secondary);
 }
 
 .invoice-delete {
@@ -331,6 +332,8 @@
   font-family: "Spartan";
 }
 
+
+
 @media screen and (max-width: 890px) {
   .invoice-functions {
     margin-left: 2.4rem;
@@ -387,6 +390,19 @@
 
 @media screen and (max-width: 500px) {
   .invoice-payment-infos {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 460px) {
+  .invoice-all-items-counts-names-second-mobile {
+    display: none;
+
+  }
+
+  .item-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
   }
 }

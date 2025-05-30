@@ -233,6 +233,7 @@ const AddInvoice = ({ show, onClose, invoice }) => {
               )}
             </label>
             <input
+            type="email"
               className={`input-field ${errors["client-email"] ? "error" : ""}`}
               value={client.email}
               onChange={(e) => setClient({ ...client, email: e.target.value })}
@@ -369,14 +370,14 @@ const AddInvoice = ({ show, onClose, invoice }) => {
           </div>
 
           <h3 className="section-item-list-title">Item List</h3>
-          <div className="section-item-list-subtitles">
+          <div className="section-item-list-subtitles invoice-all-items-counts-names-second-mobile">
             <p>Item Name</p>
             <p>Qty.</p>
             <p>Price</p>
             <p>Total</p>
           </div>
           {items.map((item, index) => (
-            <div key={index} className="item-row">
+            <div key={index} className="item-row" style={{width:"100%"}}>
               <input
                 className={`input-field ${
                   errors[`item-name-${index}`] ? "error" : ""
@@ -431,7 +432,7 @@ const AddInvoice = ({ show, onClose, invoice }) => {
                   onClick={() =>
                     toast.error("There must be at least one item!!!!!!!")
                   }
-                  style={{ cursor: "pointer" }}
+                  style={{ cursor: "pointer", alignSelf: "center"}}
                 />
               )}
             </div>

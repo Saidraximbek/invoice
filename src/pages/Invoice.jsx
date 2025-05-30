@@ -240,8 +240,8 @@ const Invoice = () => {
                   <p className="invoice-all-items-item-name">{i.name}</p>
                   <div className="invoice-all-items-item-count-price">
                     <p className="item-qyt">{i.quantity}</p>
-                    <p className="item-qyt">£{i.price}.00</p>
-                    <p className="item-qyt-total">£{i.quantity * i.price}.00</p>
+                    <p className="item-qyt">£{i.price}</p>
+                    <p className="item-qyt-total">£{i.quantity * i.price}</p>
                   </div>
 
                   <div className="invoice-all-items-item-count-price-mobile">
@@ -250,10 +250,10 @@ const Invoice = () => {
                         {i.name}
                       </p>
                       <p>
-                        {i.quantity}x£{i.price}.00
+                        {i.quantity}x£{i.price}
                       </p>
                     </div>
-                    <p className="item-qyt-total">£{i.quantity * i.price}.00</p>
+                    <p className="item-qyt-total">£{i.quantity * i.price}</p>
                   </div>
                 </div>
               ))}
@@ -290,7 +290,13 @@ const Invoice = () => {
 
           <div className="items-over-total">
             <p>Amount Due</p>
-            <h2>{Number.isInteger(total) ? `£${total}.00` : `£${total}`}</h2>
+            <h2>  {`£${Number(total).toFixed(
+                      Number(total) % 1 === 0
+                        ? 2
+                        : total.toString().split(".")[1]?.length === 1
+                        ? 2
+                        : 2
+                    )}`}</h2>
           </div>
         </div>
       </div>

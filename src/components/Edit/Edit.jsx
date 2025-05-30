@@ -215,8 +215,8 @@ const Edit = ({ show, onClose, invoice }) => {
             />
           </div>
 
-          <h3>Item List</h3>
-          <div className="section-item-list-subtitles">
+          <h3 className="edit-item-list-title">Item List</h3>
+          <div className="section-item-list-subtitles invoice-all-items-counts-names-second-mobile">
             <p>Item Name</p>
             <p>Qty.</p>
             <p>Price</p>

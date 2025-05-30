@@ -25,7 +25,7 @@ const Home = () => {
   if (pending) return <Loader />;
   if (error) return <p>{error}</p>;
 
-  let totalItem = 0
+  let totalItem = 0;
   return (
     <div className="home-container">
       <div className="home-nav">
@@ -73,11 +73,15 @@ const Home = () => {
 
                 <div className="invoice-statuces">
                   <p className="invoice-total">
-                    {invoice.items.map((i)=>{
-                       totalItem +=i.price*i.quantity
-                    })}
-                   
-                      {`£${totalItem}.00`}
+                    
+
+                    {`£${Number(invoice.total).toFixed(
+                      Number(invoice.total) % 1 === 0
+                        ? 2
+                        : invoice.total.toString().split(".")[1]?.length === 1
+                        ? 2
+                        : 2
+                    )}`}
                   </p>
                   <div className="statuce-div">
                     <p

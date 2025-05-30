@@ -157,6 +157,11 @@
   gap: 0.8rem;
 }
 
+.edit-item-list-title {
+  color: var(--color-text-secondary);
+  font-size: 1.3rem;
+}
+
 .back:hover {
   cursor: pointer;
 }
@@ -219,6 +224,7 @@
   .edit-footer {
     flex-direction: column;
     gap: 1rem;
+    margin-top: -2rem;
   }
 
   .item-row {
