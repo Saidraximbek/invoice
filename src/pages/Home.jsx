@@ -9,7 +9,7 @@ import Loader from "../components/Loader/Loader";
 
 const Home = () => {
   const { data, pending, error } = useFetch(
-    "https://json-api.uz/api/project/fn35/invoices"
+    "https://json-api.uz/api/project/fn36-3/invoices"
   );
   const navigate = useNavigate();
   const dataItem = data?.data || [];
@@ -25,6 +25,7 @@ const Home = () => {
   if (pending) return <Loader />;
   if (error) return <p>{error}</p>;
 
+  let totalItem = 0
   return (
     <div className="home-container">
       <div className="home-nav">
@@ -72,9 +73,11 @@ const Home = () => {
 
                 <div className="invoice-statuces">
                   <p className="invoice-total">
-                    {Number.isInteger(invoice.total)
-                      ? `£${invoice.total}.00`
-                      : `£${invoice.total}`}
+                    {invoice.items.map((i)=>{
+                       totalItem +=i.price*i.quantity
+                    })}
+                   
+                      {`£${totalItem}.00`}
                   </p>
                   <div className="statuce-div">
                     <p

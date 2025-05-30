@@ -15,7 +15,7 @@ const Invoice = () => {
   const [deleting, setDeleting] = useState(false);
   const [marking, setMarking] = useState(false);
   const { data, pending, error, refetch } = useFetch(
-    `https://json-api.uz/api/project/fn35/invoices/${id}`
+    `https://json-api.uz/api/project/fn36-3/invoices/${id}`
   );
 
   useEffect(() => {
@@ -31,7 +31,7 @@ const Invoice = () => {
     setMarking(true);
     try {
       const response = await fetch(
-        `https://json-api.uz/api/project/fn35/invoices/${id}`,
+        `https://json-api.uz/api/project/fn36-3/invoices/${id}`,
         {
           method: "PATCH",
           headers: {
@@ -60,7 +60,7 @@ const Invoice = () => {
     setDeleting(true);
     try {
       const response = await fetch(
-        `https://json-api.uz/api/project/fn35/invoices/${id}`,
+        `https://json-api.uz/api/project/fn36-3/invoices/${id}`,
         {
           method: "DELETE",
         }
@@ -189,10 +189,10 @@ const Invoice = () => {
               <p className="invoice-all-desc">{data.description}</p>
             </div>
             <div className="invoice-all-loc">
-              <p>{data.senderAddress?.street }</p>
-              <p>{data.senderAddress?.city }</p>
-              <p>{data.senderAddress?.postCode }</p>
-              <p>{data.senderAddress?.country }</p>
+              <p>{data.senderAddress?.street}</p>
+              <p>{data.senderAddress?.city}</p>
+              <p>{data.senderAddress?.postCode}</p>
+              <p>{data.senderAddress?.country}</p>
             </div>
           </div>
 
@@ -212,10 +212,10 @@ const Invoice = () => {
               <p className="invoice-payment-data-title">Bill To</p>
               <p className="invoice-payment-data-date">{data.clientName}</p>
               <div className="invoice-all-loc invoice-all-client-loc">
-                <p>{data.clientAddress?.street }</p>
-                <p>{data.clientAddress?.city }</p>
-                <p>{data.clientAddress?.postCode }</p>
-                <p>{data.clientAddress?.country }</p>
+                <p>{data.clientAddress?.street}</p>
+                <p>{data.clientAddress?.city}</p>
+                <p>{data.clientAddress?.postCode}</p>
+                <p>{data.clientAddress?.country}</p>
               </div>
             </div>
 
@@ -235,7 +235,7 @@ const Invoice = () => {
                   <p className="invoice-all-items-counts-titles">Total</p>
                 </div>
               </div>
-              {data.items.map((i, idx) => (
+              {data.items?.map((i, idx) => (
                 <div className="invoice-all-items-item" key={idx}>
                   <p className="invoice-all-items-item-name">{i.name}</p>
                   <div className="invoice-all-items-item-count-price">

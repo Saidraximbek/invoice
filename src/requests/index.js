@@ -1,4 +1,4 @@
-const baseUrl = "https://json-api.uz/api/project/fn35/invoices";
+const baseUrl = "https://json-api.uz/api/project/fn36-3/invoices";
 
 export async function getInvoices() {
   const res = await fetch(baseUrl);

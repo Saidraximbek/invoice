@@ -79,7 +79,7 @@ const Edit = ({ show, onClose, invoice }) => {
 
           <h2 className="section-title">
             Edit <span>#</span>
-            {invoice?.senderAddress.postCode}
+            {invoice?.id}
           </h2>
 
           <h3 className="section-subtitle">Bill From</h3>
