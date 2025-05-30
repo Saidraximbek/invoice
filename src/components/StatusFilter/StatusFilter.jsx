@@ -12,7 +12,7 @@ export default function StatusFilter({ onChange }) {
       : [...selected, status];
 
     setSelected(updated);
-    onChange(updated); // 
+    onChange(updated); 
   };
 
   return (
